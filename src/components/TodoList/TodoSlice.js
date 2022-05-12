@@ -20,7 +20,7 @@ const initState = [
 ];
 
 const todoListReducer = (state = initState, action) => {
-  console.log("todoListReducer", { state, action });
+  // console.log("todoListReducer", { state, action });
   switch (action.type) {
     case "todoList/addTodo":
       return [...state, action.payload];

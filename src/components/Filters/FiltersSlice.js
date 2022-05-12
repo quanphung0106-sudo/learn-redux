@@ -5,7 +5,7 @@ const initState = {
 };
 
 const filtersReducer = (state = initState, action) => {
-  console.log("filtersReducer", { state, action });
+//   console.log("filtersReducer", { state, action });
   switch (action.type) {
     case "filters/searchFilterChange":
       return {
