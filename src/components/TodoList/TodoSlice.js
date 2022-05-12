@@ -8,13 +8,13 @@ const initState = [
   {
     id: 2,
     name: "Hi",
-    completed: false,
+    completed: true,
     priority: "hight",
   },
   {
     id: 3,
     name: "Hello",
-    completed: false,
+    completed: true,
     priority: "low",
   },
 ];
@@ -24,6 +24,17 @@ const todoListReducer = (state = initState, action) => {
   switch (action.type) {
     case "todoList/addTodo":
       return [...state, action.payload];
+
+    case "todoList/toggleTodoStatus":
+      return state.map(
+        (todo) =>
+          (todo.id = action.payload
+            ? {
+                ...todo,
+                completed: !todo.completed,
+              }
+            : todo)
+      );
 
     default:
       return state;
