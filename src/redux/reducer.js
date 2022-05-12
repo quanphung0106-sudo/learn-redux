@@ -1,51 +1,12 @@
-const initState = {
-  filters: {
-    search: "",
-    status: "All",
-    priority: [],
-  },
-  todoList: [
-    {
-      id: 1,
-      name: "Lear",
-      completed: false,
-      priority: "medium",
-    },
-    {
-      id: 2,
-      name: "Hi",
-      completed: false,
-      priority: "hight",
-    },
-    {
-      id: 3,
-      name: "Hello",
-      completed: false,
-      priority: "low",
-    },
-  ],
-};
+import filtersReducer from "../components/Filters/FiltersSlice";
+import todoListReducer from "../components/TodoList/TodoSlice";
 
-const rootReducer = (state = initState, action) => {
+const rootReducer = (state = {}, action) => {
   console.log("rootReducer", { state, action });
-  switch (action.type) {
-    case "todoList/addTodo":
-      return {
-        ...state,
-        todoList: [...state.todoList, action.payload],
-      };
-
-    case "filters/searchFilterChange":
-      return {
-        ...state,
-        filters: {
-          ...state.filters,
-          search: action.payload,
-        },
-      };
-    default:
-      return state;
-  }
+  return {
+    filters: filtersReducer(state.filters, action),
+    todoList: todoListReducer(state.todoList, action),
+  };
 };
 
 export default rootReducer;
